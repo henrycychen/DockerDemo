@@ -11,12 +11,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 	public WebDriver driver;
 	public WebDriverWait wait;
+	static int numBasePageInitialized = 0;
 	
 	//Constructor
 	public BasePage(WebDriver driver, WebDriverWait wait) {
 		this.driver = driver;
 		this.wait = wait;
-		System.out.println("BasePage initialized");
+		numBasePageInitialized++;
+		System.out.println("BasePage class initialized number: " + numBasePageInitialized);
 	}
 	
 	//Click Method
@@ -26,7 +28,7 @@ public class BasePage {
 	
 	//Fill fields in text boxes
 	public void fillFields(String cssLocator, String text) {
-		driver.findElement(By.cssSelector(cssLocator)).sendKeys(text + "/n");
+		driver.findElement(By.cssSelector(cssLocator)).sendKeys(text + "\n");
 	}
 	
 	//Get text from element
